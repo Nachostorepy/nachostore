@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nachostore | Tecnología y accesorios al mejor precio</title>
+  <meta name="description" content="Nachostore - Tecnología y accesorios al mejor precio. Pagos por transferencia bancaria y WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0b0d;         /* negro profundo */
+      --card:#121318;       /* gris muy oscuro */
+      --muted:#9aa1ac;      /* texto secundario */
+      --text:#f5f7fa;       /* texto principal */
+      --brand:#39ff14;      /* verde neón */
+      --brand-2:#94ff7a;    /* verde neón suave */
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;}
+    a{color:var(--brand);text-decoration:none}
+    header{position:sticky;top:0;z-index:40;background:rgba(10,11,13,.7);backdrop-filter:saturate(1.5) blur(8px);border-bottom:1px solid #1c1f25}
+    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{font-weight:800;letter-spacing:.5px;font-size:22px}
+    .logo span{color:var(--brand)}
+    nav a{margin:0 10px;color:#cdd3dd}
+    nav a:hover{color:var(--brand)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:1px solid #2a2f39;border-radius:12px;background:#171923;color:var(--text);cursor:pointer}
+    .btn:hover{border-color:#3a404c}
+    .btn-primary{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#0b0b0f;border:none;font-weight:700}
+    .btn-primary:hover{filter:saturate(1.1) brightness(1.05)}
+    .hero{position:relative;padding:64px 0 32px;border-bottom:1px solid #1c1f25;background:radial-gradient(1200px 500px at 20% -10%,rgba(57,255,20,.18),transparent),radial-gradient(900px 400px at 80% 0,rgba(148,255,122,.08),transparent)}
+    .hero h1{font-size:40px;line-height:1.1;margin:0 0 10px}
+    .hero p{color:#c7cdd8;max-width:720px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+    .badge{font-size:12px;border:1px solid #2a2f39;border-radius:999px;padding:6px 10px;background:#121318;color:#cfd5df}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid #1c1f25;border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+    .card img{width:100%;height:170px;object-fit:cover;background:#0d0f14}
+    .card .p{padding:14px}
+    .price{font-weight:800;color:#dfe5ef}
+    .muted{color:var(--muted)}
+    section{padding:32px 0}
+    h2{margin:0 0 14px;font-size:26px}
+    .panel{background:var(--card);border:1px solid #1c1f25;border-radius:16px;padding:16px}
+    footer{border-top:1px solid #1c1f25;padding:28px 0;color:#aeb6c3}
+
+    /* Carrito flotante */
+    .cart{position:fixed;right:16px;bottom:16px;width:340px;max-width:92vw;background:var(--card);border:1px solid #1c1f25;border-radius:16px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);z-index:50}
+    .cart h3{margin:0 0 10px}
+    .cart-list{max-height:240px;overflow:auto;border-top:1px dashed #252a32;border-bottom:1px dashed #252a32;padding:8px 0;margin:8px 0}
+    .cart-empty{color:var(--muted);text-align:center;padding:10px}
+    .cart-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0}
+    .cart-item-title{font-weight:600}
+    .cart-item small{color:var(--muted)}
+    .x{cursor:pointer;border:none;background:transparent;color:#c6ccd8}
+    .tot{display:flex;align-items:center;justify-content:space-between;font-weight:800;margin-top:6px}
+    .whats{display:flex;gap:8px}
+    .hidden{display:none}
+
+    /* Responsive hero */
+    @media (max-width:720px){.hero h1{font-size:32px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="row" style="height:64px">
+        <div class="logo">NACHO<span>STORE</span></div>
+        <nav>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#como-comprar">Cómo comprar</a>
+          <a href="#pago">Forma de pago</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a class="btn btn-primary" href="https://wa.me/5959982474819" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="row" style="align-items:flex-start;gap:24px">
+        <div style="flex:1">
+          <div class="badges">
+            <span class="badge">Tecnología</span>
+            <span class="badge">Notebooks</span>
+            <span class="badge">Accesorios</span>
+            <span class="badge">Pago por transferencia</span>
+          </div>
+          <h1>Tecnología y accesorios <span style="color:var(--brand)">al mejor precio</span></h1>
+          <p>Comprá fácil: armá tu pedido, confirmá por WhatsApp y pagá por transferencia bancaria. Enviamos a todo el país.</p>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <a class="btn btn-primary" href="#catalogo">Ver catálogo</a>
+            <a class="btn" href="#pago">Datos de pago</a>
+          </div>
+        </div>
+        <div class="panel" style="flex:1">
+          <h3 style="margin-top:0">Cómo funciona</h3>
+          <ol style="margin:0 0 6px 18px;line-height:1.7">
+            <li>Elegí tus productos y agregalos al carrito.</li>
+            <li>Confirmá tu pedido por WhatsApp.</li>
+            <li>Realizá la transferencia con los datos del titular.</li>
+            <li>Enviá el comprobante y coordinamos el envío/retito.</li>
+          </ol>
+          <small class="muted">Pagos habilitados: Transferencia bancaria / Alias CI.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="catalogo" class="container">
+    <h2>Catálogo</h2>
+    <p class="muted" style="margin-top:-2px">Ejemplos de productos (podés reemplazar imágenes y precios cuando quieras).</p>
+
+    <h3 style="margin:18px 0 8px">Notebooks</h3>
+    <div class="grid" id="list-notebooks">
+      <!-- Productos demo notebooks -->
+      <div class="card" data-name="Dell Inspiron 15" data-price="3290000">
+        <img src="https://images.unsplash.com/photo-1457608132361-2efeab28f717?q=80&w=1200&auto=format&fit=crop" alt="Dell Inspiron"/>
+        <div class="p">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>Dell Inspiron 15 (demo)</strong>
+            <span class="price" data-price>Gs. 3.290.000</span>
+          </div>
+          <p class="muted" style="margin:6px 0 12px">i5 • 8GB • 256GB SSD</p>
+          <button class="btn add">Agregar</button>
+        </div>
+      </div>
+      <div class="card" data-name="Lenovo ThinkPad E15" data-price="3890000">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Lenovo ThinkPad"/>
+        <div class="p">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>Lenovo ThinkPad E15 (demo)</strong>
+            <span class="price" data-price>Gs. 3.890.000</span>
+          </div>
+          <p class="muted" style="margin:6px 0 12px">Ryzen 7 • 16GB • 512GB SSD</p>
+          <button class="btn add">Agregar</button>
+        </div>
+      </div>
+      <div class="card" data-name="HP Envy x360" data-price="4490000">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="HP Envy"/>
+        <div class="p">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>HP Envy x360 (demo)</strong>
+            <span class="price" data-price>Gs. 4.490.000</span>
+          </div>
+          <p class="muted" style="margin:6px 0 12px">i7 • 16GB • 512GB SSD</p>
+          <button class="btn add">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:22px 0 8px">Accesorios</h3>
+    <div class="grid" id="list-accesorios">
+      <div class="card" data-name="Mouse inalámbrico" data-price="99000">
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=1200&auto=format&fit=crop" alt="Mouse"/>
+        <div class="p">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>Mouse inalámbrico (demo)</strong>
+            <span class="price" data-price>Gs. 99.000</span>
+          </div>
+          <p class="muted" style="margin:6px 0 12px">2.4G • Silent Click</p>
+          <button class="btn add">Agregar</button>
+        </div>
+      </div>
+      <div class="card" data-name="Teclado mecánico" data-price="289000">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" alt="Teclado"/>
+        <div class="p">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>Teclado mecánico (demo)</strong>
+            <span class="price" data-price>Gs. 289.000</span>
+          </div>
+          <p class="muted" style="margin:6px 0 12px">RGB • Blue Switch</p>
+          <button class="btn add">Agregar</button>
+        </div>
+      </div>
+      <div class="card" data-name="Auriculares over-ear" data-price="359000">
+        <img src="https://images.unsplash.com/photo-1518441982124-9e3f39ba0165?q=80&w=1200&auto=format&fit=crop" alt="Auriculares"/>
+        <div class="p">
+          <div style="display:flex;justify-content:space-between;gap:8px;align-items:center">
+            <strong>Auriculares over‑ear (demo)</strong>
+            <span class="price" data-price>Gs. 359.000</span>
+          </div>
+          <p class="muted" style="margin:6px 0 12px">Hi‑Fi • Mic</p>
+          <button class="btn add">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-comprar" class="container">
+    <h2>Cómo comprar</h2>
+    <div class="panel">
+      <p><strong>1)</strong> Agregá productos al carrito y verificá el total. <br>
+         <strong>2)</strong> Tocá <em>Confirmar por WhatsApp</em> para enviarnos tu pedido. <br>
+         <strong>3)</strong> Realizá la transferencia bancaria con los datos del titular. <br>
+         <strong>4)</strong> Enviá el comprobante y coordinamos el envío o retiro en tienda.
+      </p>
+      <p class="muted">Si necesitás factura, indicá tus datos al confirmar por WhatsApp.</p>
+    </div>
+  </section>
+
+  <section id="pago" class="container">
+    <h2>Forma de pago (transferencia)</h2>
+    <div class="panel">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <div>
+          <div class="muted">Titular</div>
+          <div style="font-weight:700">MARTINEZ MENDOZA JOSE IGNACIO</div>
+        </div>
+        <div>
+          <div class="muted">Banco</div>
+          <div style="font-weight:700">Basa</div>
+        </div>
+        <div>
+          <div class="muted">N° Documento</div>
+          <div style="font-weight:700">4867138</div>
+        </div>
+        <div>
+          <div class="muted">N° Cuenta</div>
+          <div style="font-weight:700">155644317</div>
+        </div>
+        <div>
+          <div class="muted">Alias</div>
+          <div style="font-weight:700">4867138</div>
+        </div>
+        <div>
+          <div class="muted">Tipo de Alias</div>
+          <div style="font-weight:700">CI</div>
+        </div>
+      </div>
+      <p style="margin-top:10px" class="muted">Recordá adjuntar el <strong>comprobante de transferencia</strong> al confirmar tu pedido por WhatsApp.</p>
+    </div>
+  </section>
+
+  <section id="contacto" class="container">
+    <h2>Contacto</h2>
+    <div class="panel" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>
+        <div class="muted">WhatsApp</div>
+        <div style="font-weight:800;font-size:20px">+595 998 247 4819</div>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="https://wa.me/5959982474819" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <div>© <span id="y"></span> Nachostore — Hecho con ♥ en Paraguay</div>
+      <a href="#" class="muted">Políticas</a>
+    </div>
+  </footer>
+
+  <!-- Carrito -->
+  <aside class="cart" id="cart">
+    <h3>Tu carrito</h3>
+    <div class="cart-list" id="cartList">
+      <div class="cart-empty" id="empty">Tu carrito está vacío</div>
+    </div>
+    <div class="tot"><span>Total</span><span id="cartTotal">Gs. 0</span></div>
+    <div class="whats" style="margin-top:10px">
+      <button class="btn" id="clearCart" title="Vaciar">Vaciar</button>
+      <button class="btn btn-primary" id="toWhats">Confirmar por WhatsApp</button>
+    </div>
+    <small class="muted">Se generará un mensaje con detalle del pedido + datos de pago.</small>
+  </aside>
+
+  <script>
+    const numberPY = new Intl.NumberFormat('es-PY', { style: 'currency', currency: 'PYG', maximumFractionDigits: 0 });
+    const WA_NUMBER = '5959982474819';
+
+    const cart = [];
+    const cartList = document.getElementById('cartList');
+    const cartTotal = document.getElementById('cartTotal');
+    const emptyMsg = document.getElementById('empty');
+
+    const addButtons = document.querySelectorAll('.add');
+    addButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.card');
+        const name = card.dataset.name;
+        const price = parseInt(card.dataset.price, 10) || 0;
+        const item = cart.find(i => i.name === name);
+        if(item){ item.qty += 1; }
+        else{ cart.push({ name, price, qty:1 }); }
+        renderCart();
+      });
+    });
+
+    function renderCart(){
+      cartList.innerHTML = '';
+      if(cart.length === 0){
+        emptyMsg.classList.remove('hidden');
+        cartList.appendChild(emptyMsg);
+        cartTotal.textContent = numberPY.format(0);
+        return;
+      }
+      let total = 0;
+      emptyMsg.classList.add('hidden');
+      cart.forEach((it, idx) => {
+        total += it.price * it.qty;
+        const row = document.createElement('div');
+        row.className = 'cart-item';
+        row.innerHTML = `
+          <div>
+            <div class="cart-item-title">${it.name}</div>
+            <small>x${it.qty} · ${numberPY.format(it.price)}</small>
+          </div>
+          <button class="x" title="Quitar">✕</button>
+        `;
+        row.querySelector('.x').addEventListener('click', () => {
+          cart.splice(idx,1); renderCart();
+        });
+        cartList.appendChild(row);
+      });
+      cartTotal.textContent = numberPY.format(total);
+    }
+
+    document.getElementById('clearCart').addEventListener('click', () => { cart.splice(0); renderCart(); });
+
+    document.getElementById('toWhats').addEventListener('click', () => {
+      if(cart.length === 0){ alert('Tu carrito está vacío'); return; }
+      const orderId = 'NS' + Date.now().toString().slice(-8);
+      const total = cart.reduce((s,i)=> s + i.price*i.qty, 0);
+      const lines = cart.map(i => `• ${i.name} x${i.qty} — ${numberPY.format(i.price*i.qty)}`).join('\n');
+
+      const bankBlock = [
+        '—— Datos de pago ——',
+        'Titular: MARTINEZ MENDOZA JOSE IGNACIO',
+        'Banco: Basa',
+        'N° Documento: 4867138',
+        'N° Cuenta: 155644317',
+        'Alias: 4867138 (Tipo: CI)'
+      ].join('\n');
+
+      const msg = [
+        `Hola Nachostore 👋 Quiero confirmar mi pedido ${orderId}:`,
+        lines,
+        `Total: ${numberPY.format(total)}`,
+        '',
+        bankBlock,
+        '',
+        'Adjunto el comprobante de transferencia. Mis datos para envío/factura:'
+      ].join('\n');
+
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    });
+
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
